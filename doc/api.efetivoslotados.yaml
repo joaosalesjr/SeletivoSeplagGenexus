@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: "efetivoslotados"
   description: "efetivoslotados"
-  version: "20250331024554"
+  version: "20250331215753"
 servers:
   - url: http://localhost:8080/seletivojava/api/efetivoslotados
 paths:

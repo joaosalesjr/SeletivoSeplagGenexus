@@ -31,31 +31,31 @@ Script Sql: [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSe
 Arquivos de configuração yaml para testes dos api:
 
 
-[api.autenticar.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.autenticar.yaml) 
+[api.autenticar.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.autenticar.yaml) 
 
-[api.cidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.cidade.yaml) 
+[api.cidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.cidade.yaml) 
 
-[api.efetivoslotados.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.efetivoslotados.yaml)  
+[api.efetivoslotados.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.efetivoslotados.yaml)  
 
-[api.enderecofuncional.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.enderecofuncional.yaml) 
+[api.enderecofuncional.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.enderecofuncional.yaml) 
 
-[api.fotopessoa.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.fotopessoa.yaml) 
+[api.fotopessoa.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.fotopessoa.yaml) 
 
-[api.lotacao.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.lotacao.yaml) 
+[api.lotacao.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.lotacao.yaml) 
 
-[api.pessoa.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.pessoa.yaml) 
+[api.pessoa.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.pessoa.yaml) 
 
-[api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servefetivo.yaml) 
+[api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.servefetivo.yaml) 
 
-[api.servidortemporario.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servidortemporario.yaml) 
+[api.servidortemporario.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.servidortemporario.yaml) 
 
-[api.unidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.unidade.yaml) 
+[api.unidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/doc/api.unidade.yaml) 
 
 
 
 ### Configuração do Ambiente
 
-[docker-compose](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/docker-compose.yaml) para subir as imagens
+[docker-compose](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/docker/docker-compose.yaml) para subir as imagens
 
 Execute os containers:
 ```sh
@@ -79,17 +79,17 @@ O banco de dados contém as seguintes tabelas principais:
     foto_pessoa: Armazena metadados das fotos (arquivos no MinIO)
     endereco e cidade: Dados de endereçamento
 
-SCRIP SQL para criar as tabelad [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/script_create_tables.sql) .
+SCRIP SQL para criar as tabelad [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/sql/script_create_tables.sql) .
 
 
 ### Endpoints da API
 
 #### Autenticação
 
-POST  autenticar {{baseUrl}}/login - Autenticação com JWT (expira em 5 minutos) [api.autenticar.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.autenticar.yaml) .
+POST  autenticar {{baseUrl}}/login - Autenticação com JWT (expira em 5 minutos) [api.autenticar.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/doc/api.autenticar.yaml) .
 
 ### CRUDs
-GET|POST|PUT|DELETE /servefetivo - CRUD de servidores efetivos [api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servefetivo.yaml) .
+GET|POST|PUT|DELETE /servefetivo - CRUD de servidores efetivos [api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/doc/api.servefetivo.yaml) .
 
 GET|POST|PUT|DELETE /servidoretemporario - CRUD de servidores temporários [api.servidortemporario.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servidortemporario.yaml) .
 

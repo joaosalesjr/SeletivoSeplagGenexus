@@ -2,11 +2,11 @@ openapi: 3.0.0
 info:
   title: "fotopessoa"
   description: "fotopessoa"
-  version: "20250331024554"
+  version: "20250331215753"
 servers:
   - url: http://localhost:8080/seletivojava/api/fotopessoa
 paths:
-  /api/fotopessoa/gxobject:
+  /gxobject:
     post:
       tags:
         - api
@@ -46,6 +46,32 @@ paths:
         404:
           description: "Not found"
 
+
+    get:
+      tags:
+        - api  
+      operationId: "api.fotopessoa.FotoPessoaSelect"
+      summary: "Método fazer a consulta de foto da pessoa e retorna o link."
+      parameters:
+        - name: "pesid"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "string"
+
+
+        404:
+          description: "Not found"
+
 components:
   schemas:
     FotoPessoaInserirInput:  
@@ -53,27 +79,14 @@ components:
         sdt_foto_pessoa_insert:
           description: "sdt_foto_pessoa_insert"
           $ref: "#/components/schemas/api.sdt_foto_pessoa_insert"
+
   
     api.sdt_foto_pessoa_insert:
       properties:
-        fp_id:
-          description: "Id da Foto"
-          type: "integer"
-          format: "int64"
         pes_id:
           description: "Id da Pessoa"
           type: "integer"
           format: "int64"
-        fp_data:
-          description: "Data"
-          type: "string"
-          format: "date"
-        fp_bucket:
-          description: "Bucket"
-          type: "string"
-        fp_hash:
-          description: "Hash"
-          type: "string"
         fp_foto:
           description: "fp_foto"
           type: "string"
