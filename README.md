@@ -19,7 +19,6 @@ Autenticação: JWT (JSON Web Tokens)
 API: RESTful com paginação
 
 
-
 ### Configuração do Ambiente
 
 [docker-compose](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/docker-compose.yaml) para subir as imagens.
@@ -44,6 +43,8 @@ O banco de dados contém as seguintes tabelas principais:
     lotacao: Relacionamento entre servidores e unidades
     foto_pessoa: Armazena metadados das fotos (arquivos no MinIO)
     endereco e cidade: Dados de endereçamento
+
+SCRIP SQL para criar as tabelad [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/script_create_tables.sql) .
 
 
 ### Endpoints da API
