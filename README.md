@@ -1,6 +1,6 @@
 # Seletivo Seplag-MT Genexus
 
-### PROJETO PRÁTICO IMPLEMENTAÇÃO BACK-END GENEXUS
+## PROJETO PRÁTICO IMPLEMENTAÇÃO BACK-END GENEXUS
 
 <p align="justify">
 Este projeto consiste na implementação de uma API REST para gerenciamento de servidores (efetivos e temporários), unidades e lotações, conforme diagrama de banco de dados fornecido. A solução utiliza containers Docker para PostgreSQL e MinIO, com orquestração via Docker Compose.
@@ -18,10 +18,44 @@ Orquestração: Docker Compose
 Autenticação: JWT (JSON Web Tokens)
 API: RESTful com paginação
 
+### Arquivos utilizado no projeto
+
+Codigo Fonte: [Knowledge Base(KB)](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/KB_ProjetoGenexus.rar)
+
+War: [seletivojava.war](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/seletivojava.war) 
+
+docker-compose: [docker-compose.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/docker-compose.yaml) 
+
+Script Sql: [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/script_create_tables.sql) 
+ 
+Arquivos de configuração yaml para testes dos api:
+
+
+[api.autenticar.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.autenticar.yaml) 
+
+[api.cidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.cidade.yaml) 
+
+[api.efetivoslotados.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.efetivoslotados.yaml)  
+
+[api.enderecofuncional.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.enderecofuncional.yaml) 
+
+[api.fotopessoa.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.fotopessoa.yaml) 
+
+[api.lotacao.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.lotacao.yaml) 
+
+[api.pessoa.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.pessoa.yaml) 
+
+[api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servefetivo.yaml) 
+
+[api.servidortemporario.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servidortemporario.yaml) 
+
+[api.unidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.unidade.yaml) 
+
+
 
 ### Configuração do Ambiente
 
-[docker-compose](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/docker-compose.yaml) para subir as imagens.
+[docker-compose](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/docker-compose.yaml) para subir as imagens
 
 Execute os containers:
 ```sh
@@ -30,6 +64,7 @@ docker-compose up -d
 O ambiente estará disponível nos seguintes endereços:
 
 PostgreSQL: localhost:5432  (usuário: postgres,  senha: 123456)
+
 MinIO Console: localhost:9001 (usuário: minioadmin,  senha: minioadmin)
 
 ### Estrutura do Banco de Dados
