@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: "fotopessoa"
+  description: "fotopessoa"
+  version: "20250331024554"
+servers:
+  - url: http://localhost:8080/seletivojava/api/fotopessoa
+paths:
+  /api/fotopessoa/gxobject:
+    post:
+      tags:
+        - api
+      operationId: "Uploadapi.fotopessoa"
+      summary: "Upload a binary for fotopessoa"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Bad request"
+        500:
+          description: "Internal Server Error"
+
+  /:
+    post:
+      tags:
+        - api  
+      operationId: "api.fotopessoa.FotoPessoaInserir"
+      summary: "Método fazer upload da foto da pessoa."
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FotoPessoaInserirInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+    FotoPessoaInserirInput:  
+      properties:
+        sdt_foto_pessoa_insert:
+          description: "sdt_foto_pessoa_insert"
+          $ref: "#/components/schemas/api.sdt_foto_pessoa_insert"
+  
+    api.sdt_foto_pessoa_insert:
+      properties:
+        fp_id:
+          description: "Id da Foto"
+          type: "integer"
+          format: "int64"
+        pes_id:
+          description: "Id da Pessoa"
+          type: "integer"
+          format: "int64"
+        fp_data:
+          description: "Data"
+          type: "string"
+          format: "date"
+        fp_bucket:
+          description: "Bucket"
+          type: "string"
+        fp_hash:
+          description: "Hash"
+          type: "string"
+        fp_foto:
+          description: "fp_foto"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+ 
