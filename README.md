@@ -50,7 +50,7 @@ O banco de dados contém as seguintes tabelas principais:
 
 #### Autenticação
 
-autenticar POST {{baseUrl}}/login - Autenticação com JWT (expira em 5 minutos) [api.autenticar.yaml] (https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.autenticar.yaml) .
+POST  autenticar {{baseUrl}}/login - Autenticação com JWT (expira em 5 minutos) [api.autenticar.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.autenticar.yaml) .
 
 ### CRUDs
 GET|POST|PUT|DELETE /servefetivo - CRUD de servidores efetivos [api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servefetivo.yaml) .
@@ -68,6 +68,8 @@ GET|POST|PUT|DELETE /cidade - CRUD de cidades [api.cidade.yaml](https://github.c
 GET /efetivoslotados?UnitId=<long>&Pagina=<integer>&Pagesize=<integer> - Lista servidores efetivos lotados em uma unidade (com nome, idade, unidade e link temporário para foto) [api.efetivoslotados.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.efetivoslotados.yaml) .
 
 GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer> - Consulta endereço funcional por parte do nome do servidor [api.enderecofuncional.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.enderecofuncional.yaml) .
+
+POST /fotopessoa {{baseUrl}}/gxobject -  Realiza o Upload da foto da pessoa e link temporário [api.fotopessoa.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.fotopessoa.yaml) .
 
 
 ### Funcionalidades Implementadas
@@ -104,11 +106,11 @@ GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer> -
 
 ### Autenticação
 
-1. Executar o api de autenticação pra gera o token valido por 5 minutos 
+1. Executar o api de autenticação pra gera o token valido por 5 minutos, usuario e senha pre determinado: 
 
-## api: autenticar 
+### api: autenticar 
 
-    (http://localhost:8080/seletivojava/api/autenticar)
+    http://localhost:8080/seletivojava/api/autenticar
  
     {{baseUrl}}/login
 
@@ -124,18 +126,44 @@ Apos autentica utilizar o token gerado no Auth dos Api's para ter autorização 
 
 ### Listar servidores em uma unidade
 
-```bash
-curl -X GET http://localhost:3000/unidades/1/servidores \
+    http://localhost:8080/seletivojava/api/efetivoslotados
 
-  -H "Authorization: Bearer [TOKEN_JWT]"
+```url  
+  {{baseUrl}}/?UnitId=<long>&Pagina=<integer>&Pagesize=<integer>
 ```
+
+### Listar o endereço funcional
+
+    http://localhost:8080/seletivojava/api/enderecofuncional
+
+```url  
+  {{baseUrl}}/?Nome=<string>&Pagina=<integer>&Pagesize=<integer>
+```
+
 
 ### Upload de foto
-```bash
-curl -X POST http://localhost:3000/servidores/1/fotos \
-  -H "Authorization: Bearer [TOKEN_JWT]" \
-  -F "foto=@caminho/para/foto.jpg"
+
+API fotopessoa
+
+1 Upload a binary for fotopessoa
+
+```url
+    POST http://localhost:8080/seletivojava/api/fotopessoa
 ```
+Fazer o upload da foto com:
+```url
+    {{baseUrl}}/gxobject
+```
+Obtendo o:
+```json
+    {
+        "object_id": "gxupload:5cd27323e7ea4ca3b8912b1cca3ac020"
+    }
+```
+
+2 Método fazer upload da foto da pessoa.
+
+
 
 ## Considerações Finais
 
