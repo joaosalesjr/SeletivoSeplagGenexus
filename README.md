@@ -1,6 +1,6 @@
-# SeletivoSeplagGenexus
+# Seletivo Seplag-MT Genexus
 
-<h1>PROJETO PRÁTICO IMPLEMENTAÇÃO BACK-END GENEXUS</h1> 
+### PROJETO PRÁTICO IMPLEMENTAÇÃO BACK-END GENEXUS
 
 <p align="justify">
 Este projeto consiste na implementação de uma API REST para gerenciamento de servidores (efetivos e temporários), unidades e lotações, conforme diagrama de banco de dados fornecido. A solução utiliza containers Docker para PostgreSQL e MinIO, com orquestração via Docker Compose.
@@ -10,7 +10,7 @@ Este projeto consiste na implementação de uma API REST para gerenciamento de s
 
 ### Tecnologias Utilizadas
 
-Genexus 18 UP 8
+Genexus 18 UP 8o
 Java jdk-17.0.12
 Banco de Dados: PostgreSQL (container)
 Armazenamento de Objetos: MinIO (container)
@@ -31,63 +31,44 @@ docker-compose up -d
 O ambiente estará disponível nos seguintes endereços:
 
 PostgreSQL: localhost:5432  (usuário: postgres,  senha: 123456)
-
 MinIO Console: localhost:9001 (usuário: minioadmin,  senha: minioadmin)
 
-
-
 ### Estrutura do Banco de Dados
+
 O banco de dados contém as seguintes tabelas principais:
 
-pessoa: Dados pessoais dos servidores
-
-servidor_efetivo: Servidores com vínculo efetivo
-
-servidor_temporario: Servidores com vínculo temporário
-
-unidade: Unidades organizacionais
-
-lotacao: Relacionamento entre servidores e unidades
-
-foto_pessoa: Armazena metadados das fotos (arquivos no MinIO)
-
-endereco e cidade: Dados de endereçamento
+    pessoa: Dados pessoais dos servidores
+    servidor_efetivo: Servidores com vínculo efetivo
+    servidor_temporario: Servidores com vínculo temporário
+    unidade: Unidades organizacionais
+    lotacao: Relacionamento entre servidores e unidades
+    foto_pessoa: Armazena metadados das fotos (arquivos no MinIO)
+    endereco e cidade: Dados de endereçamento
 
 
 ### Endpoints da API
-Autenticação
 
-autenticar POST {{baseUrl}}/login - Autenticação com JWT (expira em 5 minutos)
+#### Autenticação
+
+autenticar POST {{baseUrl}}/login - Autenticação com JWT (expira em 5 minutos) [api.autenticar.yaml] (https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.autenticar.yaml) .
 
 ### CRUDs
-GET|POST|PUT|DELETE /servefetivo - CRUD de servidores efetivos
+GET|POST|PUT|DELETE /servefetivo - CRUD de servidores efetivos [api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servefetivo.yaml) .
 
-[api.servefetivo.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servefetivo.yaml) para teste.
+GET|POST|PUT|DELETE /servidoretemporario - CRUD de servidores temporários [api.servidortemporario.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servidortemporario.yaml) .
 
-GET|POST|PUT|DELETE /servidoretemporario - CRUD de servidores temporários
-
-[api.servidortemporario.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.servidortemporario.yaml) para teste.
-
-GET|POST|PUT|DELETE /unidade - CRUD de unidades
-
-[api.unidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.unidade.yaml) para teste.
+GET|POST|PUT|DELETE /unidade - CRUD de unidades  [api.unidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.unidade.yaml) .
 
 GET|POST|PUT|DELETE /lotacao - CRUD de lotações
+[api.lotacao.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.lotacao.yaml) .
 
-[api.lotacao.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.lotacao.yaml) para teste.
-
-GET|POST|PUT|DELETE /cidade - CRUD de lotações
-[api.cidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.cidade.yaml) para teste.
-
+GET|POST|PUT|DELETE /cidade - CRUD de cidades [api.cidade.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.cidade.yaml) .
 
 ### Endpoints Específicos
-GET /efetivoslotados?UnitId=<long>&Pagina=<integer>&Pagesize=<integer> - Lista servidores efetivos lotados em uma unidade (com nome, idade, unidade e link temporário para foto)
+GET /efetivoslotados?UnitId=<long>&Pagina=<integer>&Pagesize=<integer> - Lista servidores efetivos lotados em uma unidade (com nome, idade, unidade e link temporário para foto) [api.efetivoslotados.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.efetivoslotados.yaml) .
 
-[api.efetivoslotados.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.efetivoslotados.yaml) para teste.
+GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer> - Consulta endereço funcional por parte do nome do servidor [api.enderecofuncional.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.enderecofuncional.yaml) .
 
-GET /enderecofuncional?nome={parte_do_nome}<string>&Pagina=<integer>&Pagesize=<integer> - Consulta endereço funcional por parte do nome do servidor
-
-[api.enderecofuncional.yaml](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/api.enderecofuncional.yaml) para teste.
 
 ### Funcionalidades Implementadas
 
@@ -114,22 +95,38 @@ GET /enderecofuncional?nome={parte_do_nome}<string>&Pagina=<integer>&Pagesize=<i
 
 ## Como Executar
 
-1. Configure as variáveis de ambiente no arquivo `.env`
+1. Deploy do war no tomcat ou similar `seletivojava.war`
 2. Inicie os containers: `docker-compose up -d`
-3. Execute a aplicação: `npm start` (ou comando equivalente para outra linguagem)
-4. Acesse a API em `http://localhost:[PORTA]`
-# Exemplos de Uso
+3. Execute a aplicação
+4. Acesse a API em `http://localhost:8080/seletivojava/`
+
+## Exemplos de Uso
 
 ### Autenticação
-```bash
-curl -X POST http://localhost:3000/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"senha"}'
+
+1. Executar o api de autenticação pra gera o token valido por 5 minutos 
+
+## api: autenticar 
+
+    (http://localhost:8080/seletivojava/api/autenticar)
+ 
+    {{baseUrl}}/login
+
+```json
+    {
+    "Login": "admin",
+    "Password": "admin"
+    }
 ```
 
+Apos autentica utilizar o token gerado no Auth dos Api's para ter autorização de uso.
+
+
 ### Listar servidores em uma unidade
+
 ```bash
 curl -X GET http://localhost:3000/unidades/1/servidores \
+
   -H "Authorization: Bearer [TOKEN_JWT]"
 ```
 
