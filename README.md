@@ -8,10 +8,7 @@
 - **Perfil**: Desenvolvedor Genexus - Sênior
 
 
-### Perfil: DESENVOLVEDOR GENEXUS - SÊNIOR
-
-
-#PROJETO PRÁTICO IMPLEMENTAÇÃO BACK-END GENEXUS
+# PROJETO PRÁTICO IMPLEMENTAÇÃO BACK-END GENEXUS
 
 
 ---
@@ -30,6 +27,7 @@ Este projeto consiste na implementação de uma API REST para gerenciamento de s
  - **Orquestração: Docker Compose** 
  - **Autenticação: JWT** (JSON Web Tokens) 
 
+---
 
 ### Arquivos do projeto
 Codigo Fonte no diretorio `KB`: [Knowledge Base(KB)](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/kb/KB_ProjetoGenexus.rar)
@@ -38,9 +36,9 @@ A aplicação no diretorio `War`: [seletivojava.war](https://github.com/joaosale
 
 Script Sql de criação da estrutura do banco de dados no diretorio `sql`: [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/sql/script_create_tables.sql) 
 
+---
 
-
-## Configuração do Ambiente
+### **Configuração do Ambiente**
 
 1. Navegue até a pasta `docker` do projeto e obtenha o arquivo [`docker-compose`](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/docker/docker-compose.yaml).
 
@@ -59,9 +57,9 @@ O ambiente estará disponível nos seguintes endereços:
 - **MinIO Console**: `localhost:9001` (usuário: `minioadmin`, senha: `minioadmin`)
 
 
-### Endpoints da API
+### **Endpoints da API**
 
-Os arquivos de configuração YAML para testes estão na pasta `doc`:
+Os arquivos de configuração YAML para testes estão no diretório `doc`:
 
 - `api.autenticar.yaml`
 - `api.cidade.yaml`
@@ -81,24 +79,24 @@ Os arquivos de configuração YAML para testes estão na pasta `doc`:
 
 ### **CRUDs**
 
-- **Servidores Efetivos**: `GET | POST | PUT | DELETE /servefetivo` [api.servefetivo.yaml]
-- **Servidores Temporários**: `GET | POST | PUT | DELETE /servidoretemporario` [api.servidortemporario.yaml]
-- **Unidades**: `GET | POST | PUT | DELETE /unidade` [api.unidade.yaml]
-- **Lotação**: `GET | POST | PUT | DELETE /lotacao` [api.lotacao.yaml]
-- **Cidades**: `GET | POST | PUT | DELETE /cidade` [api.cidade.yaml]
+- **Servidores Efetivos**: `GET|POST|PUT|DELETE /servefetivo` [api.servefetivo.yaml]
+- **Servidores Temporários**: `GET|POST|PUT|DELETE /servidoretemporario` [api.servidortemporario.yaml]
+- **Unidades**: `GET|POST|PUT|DELETE /unidade` [api.unidade.yaml]
+- **Lotação**: `GET|POST|PUT|DELETE /lotacao` [api.lotacao.yaml]
+- **Cidades**: `GET|POST|PUT|DELETE /cidade` [api.cidade.yaml]
 
 ### **Endpoints Específicos**
 
-- ** GET /efetivoslotados?UnitId=<long>&Pagina=<integer>&Pagesize=<integer>** - Lista servidores efetivos lotados em uma unidade (com nome, idade, unidade e link temporário para foto) [api.efetivoslotados.yaml]
+- **GET /efetivoslotados?UnitId=<long>&Pagina=<integer>&Pagesize=<integer>** - Lista servidores efetivos lotados em uma unidade (com nome, idade, unidade e link temporário para foto) [api.efetivoslotados.yaml]
 
-- ** GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer>** - Consulta endereço funcional por parte do nome do servidor. [api.enderecofuncional.yaml]
+- **GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer>** - Consulta endereço funcional por parte do nome do servidor. [api.enderecofuncional.yaml]
 
-- ** POST /fotopessoa {{baseUrl}}/gxobject** -  Carregar um binário para fotopessoa. [api.fotopessoa.yaml]
+- **POST /fotopessoa {{baseUrl}}/gxobject** -  Carregar um binário para fotopessoa. [api.fotopessoa.yaml]
 
-- ** GET | POST /fotopessoa {{baseUrl}}/** -  Grava e consulta a foto da pessoa. [api.fotopessoa.yaml]
+- **GET|POST /fotopessoa {{baseUrl}}/** -  Grava e consulta a foto da pessoa. [api.fotopessoa.yaml]
 
 
-### Funcionalidades Implementadas
+### **Funcionalidades Implementadas**
 
 1. **Autenticação e Autorização**:
    - JWT com expiração em 5 minutos
@@ -120,15 +118,15 @@ Os arquivos de configuração YAML para testes estão na pasta `doc`:
    - Servidores por unidade com dados calculados (idade)
    - Endereço funcional por nome do servidor
 
+---
 
-
-## Exemplos de Uso
+# **Exemplos de Uso**
 
 ### Autenticação
 
 1. Executar o api de autenticação pra gera o token valido por 5 minutos, usuario e senha pre determinado: 
 
-### api: autenticar 
+### **api: autenticar**
 
     http://localhost:8080/seletivojava/api/autenticar
  
@@ -144,7 +142,7 @@ Os arquivos de configuração YAML para testes estão na pasta `doc`:
 Apos autentica utilizar o token gerado no Auth/Bearer token dos Api's para ter autorização de uso.
 
 
-### Listar servidores em uma unidade
+### **Listar servidores em uma unidade**
 
     http://localhost:8080/seletivojava/api/efetivoslotados
 
@@ -159,11 +157,11 @@ Apos autentica utilizar o token gerado no Auth/Bearer token dos Api's para ter a
 ```url  
   {{baseUrl}}/?Nome=<string>&Pagina=<integer>&Pagesize=<integer>
 ```
-
+---
 
 ## Upload de foto
 
-## API fotopessoa
+### **API fotopessoa**
 
 1 Carregar um binário para fotopessoa
 
@@ -195,7 +193,7 @@ Obtendo o:
 ```
 
 
-## Considerações Finais
+# Considerações Finais
 
 Esta implementação atende todos os requisitos solicitados, incluindo:
 - Autenticação JWT com expiração e renovação
