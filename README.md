@@ -2,9 +2,11 @@
 
 ## Inscrição do candidato:
 
-Processo Seletivo: PSS 02/2025/SEPLAG (Analista de TI - Perfil Sênior)
-Inscrição: 8692
-Nome: JOAO PEREIRA SALES JUNIOR
+- **Processo Seletivo**: PSS 02/2025/SEPLAG (Analista de TI - Perfil Sênior)
+- **Inscrição**: 8692
+- **Nome**: JOAO PEREIRA SALES JUNIOR
+- **Perfil**: Desenvolvedor Genexus - Sênior
+
 
 ### Perfil: DESENVOLVEDOR GENEXUS - SÊNIOR
 
@@ -22,7 +24,7 @@ Este projeto consiste na implementação de uma API REST para gerenciamento de s
 
 ### Tecnologias Utilizadas
 
- - **Genexus 18 UP8** com Java jdk-17.0.12  
+ - **Genexus 18 UP8** com Java **JDK 17.0.12** 
  - **Banco de Dados: PostgreSQL 17** (container) 
  - **Armazenamento de Objetos: MinIO** (container) 
  - **Orquestração: Docker Compose** 
@@ -30,74 +32,70 @@ Este projeto consiste na implementação de uma API REST para gerenciamento de s
 
 
 ### Arquivos do projeto
-Codigo Fonte no diretorio `KB`: [Knowledge Base(KB)](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/KB_ProjetoGenexus.rar)
+Codigo Fonte no diretorio `KB`: [Knowledge Base(KB)](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/kb/KB_ProjetoGenexus.rar)
 
-A aplicação no diretorio `War`: [seletivojava.war](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/seletivojava.war) 
+A aplicação no diretorio `War`: [seletivojava.war](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/war/seletivojava.war) 
 
-Script Sql de criação da estrutura do banco de dados no diretorio `sql`: [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/script_create_tables.sql) 
+Script Sql de criação da estrutura do banco de dados no diretorio `sql`: [script_create_tables.sql](https://github.com/joaosalesjr/SeletivoSeplagGenexus/edit/main/sql/script_create_tables.sql) 
 
 
 
-## Configuração do Ambiente - Como Executar
+## Configuração do Ambiente
 
-1. Navegue até a pasta `docker` no projeto, para obter o arquivo [docker-compose](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/docker/docker-compose.yaml).
+1. Navegue até a pasta `docker` do projeto e obtenha o arquivo [`docker-compose`](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/docker/docker-compose.yaml).
 
 2. Execute o seguinte comando no terminal dentro dessa pasta:
     ```sh
     docker-compose up -d
     ```
-  Este comando iniciará os seguintes containers:
+  Isso iniciará os seguintes containers:
    - MinIO
    - PostgreSQL
-   - Tomcat com a Aplicação seletivojava.war
+   
 
 O ambiente estará disponível nos seguintes endereços:
 
-    - PostgreSQL: localhost:5432  (usuário: postgres,  senha: 123456)
-
-    - MinIO Console: localhost:9001 (usuário: minioadmin,  senha: minioadmin)
+- **PostgreSQL**: `localhost:5432` (usuário: `postgres`, senha: `123456`)
+- **MinIO Console**: `localhost:9001` (usuário: `minioadmin`, senha: `minioadmin`)
 
 
 ### Endpoints da API
 
-1. Navegue até a pasta `doc` no projeto, para obter os arquivos configuração yaml, que auxiliarão nos  testes dos api:
+Os arquivos de configuração YAML para testes estão na pasta `doc`:
+
+- `api.autenticar.yaml`
+- `api.cidade.yaml`
+- `api.efetivoslotados.yaml`
+- `api.enderecofuncional.yaml`
+- `api.fotopessoa.yaml`
+- `api.lotacao.yaml`
+- `api.pessoa.yaml`
+- `api.servefetivo.yaml`
+- `api.servidortemporario.yaml`
+- `api.unidade.yaml`
 
 
-    - api.autenticar.yaml
-    - api.cidade.yaml
-    - api.efetivoslotados.yaml
-    - api.enderecofuncional.yaml
-    - api.fotopessoa.yaml
-    - api.lotacao.yaml
-    - api.pessoa.yaml
-    - api.servefetivo.yaml
-    - api.servidortemporario.yaml
-    - api.unidade.yaml
+### **Autenticação**
 
-#### Autenticação
+**POST** `{{baseUrl}}/login` - Autenticação via JWT (expira em 5 minutos). [api.autenticar.yaml]
 
-POST  autenticar {{baseUrl}}/login - Autenticação com JWT (expira em 5 minutos). [api.autenticar.yaml]
+### **CRUDs**
 
-### CRUDs
-GET|POST|PUT|DELETE /servefetivo - CRUD de servidores efetivos [api.servefetivo.yaml]
+- **Servidores Efetivos**: `GET | POST | PUT | DELETE /servefetivo` [api.servefetivo.yaml]
+- **Servidores Temporários**: `GET | POST | PUT | DELETE /servidoretemporario` [api.servidortemporario.yaml]
+- **Unidades**: `GET | POST | PUT | DELETE /unidade` [api.unidade.yaml]
+- **Lotação**: `GET | POST | PUT | DELETE /lotacao` [api.lotacao.yaml]
+- **Cidades**: `GET | POST | PUT | DELETE /cidade` [api.cidade.yaml]
 
-GET|POST|PUT|DELETE /servidoretemporario - CRUD de servidores temporários. [api.servidortemporario.yaml]
+### **Endpoints Específicos**
 
-GET|POST|PUT|DELETE /unidade - CRUD de unidades.  [api.unidade.yaml]
+- ** GET /efetivoslotados?UnitId=<long>&Pagina=<integer>&Pagesize=<integer>** - Lista servidores efetivos lotados em uma unidade (com nome, idade, unidade e link temporário para foto) [api.efetivoslotados.yaml]
 
-GET|POST|PUT|DELETE /lotacao - CRUD de lotações. [api.lotacao.yaml]
+- ** GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer>** - Consulta endereço funcional por parte do nome do servidor. [api.enderecofuncional.yaml]
 
-GET|POST|PUT|DELETE /cidade - CRUD de cidades. [api.cidade.yaml]
+- ** POST /fotopessoa {{baseUrl}}/gxobject** -  Carregar um binário para fotopessoa. [api.fotopessoa.yaml]
 
-
-### Endpoints Específicos
-GET /efetivoslotados?UnitId=<long>&Pagina=<integer>&Pagesize=<integer> - Lista servidores efetivos lotados em uma unidade (com nome, idade, unidade e link temporário para foto) [api.efetivoslotados.yaml]
-
-GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer> - Consulta endereço funcional por parte do nome do servidor. [api.enderecofuncional.yaml]
-
-POST /fotopessoa {{baseUrl}}/gxobject -  Carregar um binário para fotopessoa. [api.fotopessoa.yaml]
-
-GET | POST /fotopessoa {{baseUrl}}/ -  Grava e consulta a foto da pessoa. [api.fotopessoa.yaml]
+- ** GET | POST /fotopessoa {{baseUrl}}/** -  Grava e consulta a foto da pessoa. [api.fotopessoa.yaml]
 
 
 ### Funcionalidades Implementadas
