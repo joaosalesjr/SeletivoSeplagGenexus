@@ -183,7 +183,7 @@ Obtendo o:
     }
 ```
 
-2 Para ravar os dados da foto da pessoa utilizar o pes_id existente.
+2 Para gravar os dados da foto da pessoa utilizar o pes_id existente.
 ```url
     {{baseUrl}}/
 ```
