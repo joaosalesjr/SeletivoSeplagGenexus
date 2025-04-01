@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: "fotopessoa"
   description: "fotopessoa"
-  version: "20250331215753"
+  version: "20250331232404"
 servers:
   - url: http://localhost:8080/seletivojava/api/fotopessoa
 paths:
@@ -11,7 +11,7 @@ paths:
       tags:
         - api
       operationId: "Uploadapi.fotopessoa"
-      summary: "Upload a binary for fotopessoa"
+      summary: "Carregar um binário para fotopessoa"
       responses:
         200:
           description: "Successful operation"
@@ -25,7 +25,7 @@ paths:
       tags:
         - api  
       operationId: "api.fotopessoa.FotoPessoaInserir"
-      summary: "Método fazer upload da foto da pessoa."
+      summary: "Método grava a foto da pessoa."
       requestBody:
         required: false
         content:
