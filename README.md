@@ -24,6 +24,7 @@ Este projeto consiste na implementação de uma API REST para gerenciamento de s
  - **Genexus 18 UP8** com Java **JDK 17.0.12** 
  - **Banco de Dados: PostgreSQL 17** (container) 
  - **Armazenamento de Objetos: MinIO** (container) 
+ - **Servidor de Aplicação: Tomcat 11** (container) 
  - **Orquestração: Docker Compose** 
  - **Autenticação: JWT** (JSON Web Tokens) 
 
@@ -46,20 +47,27 @@ Script Sql de criação da estrutura do banco de dados no diretorio `sql`: [scri
     ```sh
     docker-compose up -d
     ```
-  Isso iniciará os seguintes containers:
+  Esta ação iniciará os seguintes containers:
    - MinIO
    - PostgreSQL
+   - Tomcat 11
    
 
 O ambiente estará disponível nos seguintes endereços:
 
 - **PostgreSQL**: `localhost:5432` (usuário: `postgres`, senha: `123456`)
 - **MinIO Console**: `localhost:9001` (usuário: `minioadmin`, senha: `minioadmin`)
-
+- **Tomcat 11**: `localhost:8080`
 
 ### **Endpoints da API**
 
-Os arquivos de configuração YAML para testes estão no diretório `doc`:
+Na aplicação teremos o swagger-ui que ustilizamos para teste dos api:
+
+### **swagger-ui**
+    
+    http://localhost:8080/seletivojava/swagger-ui/
+
+Este que foi configurado com os arquivos YAML que estão disponivel no diretório `doc` listado a baixo:
 
 - `api.autenticar.yaml`
 - `api.cidade.yaml`
@@ -72,10 +80,11 @@ Os arquivos de configuração YAML para testes estão no diretório `doc`:
 - `api.servidortemporario.yaml`
 - `api.unidade.yaml`
 
+Assim podemos executar o passo a passo abaixo para testar selecionando o api na combombox **Select a definition**.
 
 ### **Autenticação**
 
-**POST** `{{baseUrl}}/login` - Autenticação via JWT (expira em 5 minutos). [api.autenticar.yaml]
+**Autenticar obter o Token** `POST /login` - Metodo gerar o token de Autenticação via JWT (expira em 5 minutos). [api.autenticar.yaml]
 
 ### **CRUDs**
 
@@ -91,9 +100,9 @@ Os arquivos de configuração YAML para testes estão no diretório `doc`:
 
 - **GET /enderecofuncional?nome={nome}<string>&Pagina=<integer>&Pagesize=<integer>** - Consulta endereço funcional por parte do nome do servidor. [api.enderecofuncional.yaml]
 
-- **POST /fotopessoa {{baseUrl}}/gxobject** -  Carregar um binário para fotopessoa. [api.fotopessoa.yaml]
+- **POST /fotopessoa  /gxobject** -  Carregar uma foto em binário da fotopessoa. [api.fotopessoa.yaml]
 
-- **GET|POST /fotopessoa {{baseUrl}}/** -  Grava e consulta a foto da pessoa. [api.fotopessoa.yaml]
+- **GET|POST /fotopessoa  /** -  Grava e consulta a foto da pessoa. [api.fotopessoa.yaml]
 
 
 ### **Funcionalidades Implementadas**
