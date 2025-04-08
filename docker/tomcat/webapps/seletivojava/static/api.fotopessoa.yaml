@@ -12,16 +12,35 @@ paths:
     post:
       tags:
         - api
-      operationId: "Uploadapi.fotopessoa"
-      summary: "Carregar um binário para fotopessoa"
+      operationId: "UploadImagemDireta"
+      summary: "Faz upload direto de uma imagem no corpo da requisição"
+      requestBody:
+        required: true
+        content:
+          image/png:
+            schema:
+              type: string
+              format: binary
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+          image/jpg:
+            schema:
+              type: string
+              format: binary
+          image/gif:
+            schema:
+              type: string
+              format: binary
       responses:
         200:
-          description: "Successful operation"
+          description: "Upload realizado com sucesso"
         400:
-          description: "Bad request"
+          description: "Requisição inválida"
         500:
-          description: "Internal Server Error"
-
+          description: "Erro interno no servidor"
+  
   /:
     post:
       tags:

@@ -14,7 +14,6 @@ services:
       - app-network
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./init-db:/docker-entrypoint-initdb.d
   minio:
     image: minio/minio
     container_name: minio
@@ -28,20 +27,35 @@ services:
     networks:
       - app-network
     volumes:
-      - minio-data:/data
-  tomcat11:
-      image: tomcat:11-jdk17
-      container_name: seletivo-tomcat
-      ports:
-        - "8080:8080"
-      volumes:
-        - ./tomcat/webapps:/usr/local/tomcat/webapps
-        - ./tomcat/conf/context.xml:/usr/local/tomcat/conf/context.xml
-      depends_on:
-        - postgres
-      networks:
-        - app-network
+      - ./minio:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
+  createbuckets:
+    image: minio/mc
+    container_name: minio-createbuckets
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - app-network
+    entrypoint: ["/bin/sh", "-c", "sleep 5 && mc alias set myminio http://minio:9000 minioadmin minioadmin && (mc ls myminio/gxseletivo || mc mb myminio/gxseletivo) && mc policy set public myminio/gxseletivo"]
+        
+  tomcat11:
+    image: tomcat:11-jdk17
+    container_name: seletivo-tomcat
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
+      - ./tomcat/conf/context.xml:/usr/local/tomcat/conf/context.xml
+    depends_on:
+      - postgres
+    networks:
+      - app-network
 networks:
   app-network:
     driver: bridge
@@ -49,3 +63,4 @@ networks:
 volumes:
   pgdata:
   minio-data:
+

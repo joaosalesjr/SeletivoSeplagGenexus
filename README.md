@@ -39,14 +39,20 @@ Script Sql de criação da estrutura do banco de dados no diretorio `sql`: [scri
 
 ---
 
-### **Configuração do Ambiente**
+1. Clonar o repositório
 
-1. Navegue até a pasta `docker` do projeto e obtenha o arquivo [`docker-compose`](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/docker/docker-compose.yaml).
+   ```bash
+   git clone https://github.com/joaosalesjr/SeletivoSeplagGenexus.git
+   cd SeletivoSeplagGenexus
+   ```
 
-2. Execute o seguinte comando no terminal dentro dessa pasta:
+2. Navegue até a pasta `docker` do projeto e obtenha o arquivo [`docker-compose`](https://github.com/joaosalesjr/SeletivoSeplagGenexus/blob/main/docker/docker-compose.yaml).
+
+3. Execute o seguinte comando no terminal dentro dessa pasta:
     ```sh
     docker-compose up -d
     ```
+    
   Esta ação iniciará os seguintes containers:
    - MinIO
    - PostgreSQL
