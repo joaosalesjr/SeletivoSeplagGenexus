@@ -13,7 +13,7 @@ paths:
       tags:
         - api
       operationId: "UploadImagemDireta"
-      summary: "Faz upload direto de uma imagem no corpo da requisição"
+      summary: "Faz upload direto de uma imagem no corpo da requisicao"
       requestBody:
         required: true
         content:
