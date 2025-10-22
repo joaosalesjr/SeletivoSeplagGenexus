@@ -67,7 +67,7 @@ O ambiente estará disponível nos seguintes endereços:
 
 ### **Endpoints da API**
 
-Na aplicação teremos o swagger-ui que ustilizamos para teste dos api:
+Na aplicação teremos o swagger-ui que ultilizamos para teste dos api:
 
 ### **swagger-ui**
     
